@@ -15,18 +15,29 @@ export default function Form() {
   };
 
   const validate = () => {
-    const newErrors = {};
-    if (!formData.name) newErrors.name = "Name is required";
-    if (!formData.email) {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email is invalid";
-    }
-    if (!formData.password) newErrors.password = "Password is required";
-    else if (formData.password.length < 6)
-      newErrors.password = "Password must be at least 6 characters";
-    return newErrors;
-  };
+  const newErrors = {};
+
+  if (!formData.name) newErrors.name = "Name is required";
+
+  if (!formData.email) {
+    newErrors.email = "Email is required";
+  } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    newErrors.email = "Email is invalid";
+  }
+
+  if (!formData.password) {
+    newErrors.password = "Password is required";
+  } else if (
+    !/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(
+      formData.password
+    )
+  ) {
+    newErrors.password =
+      "Password must be at least 8 characters, include 1 uppercase letter, 1 number, and 1 special character";
+  }
+
+  return newErrors;
+};
 
   const handleSubmit = (e) => {
     e.preventDefault();
