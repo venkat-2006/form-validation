@@ -30,7 +30,6 @@ The form includes the following features:
 
 ## Project Structure
 
-```
 src/
   ├─ App.jsx
   ├─ Form.jsx
@@ -38,6 +37,6 @@ src/
 public/
   └─ background.jpg
 index.html
-```
+
 
 
