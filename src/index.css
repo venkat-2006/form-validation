@@ -15,7 +15,7 @@ body {
   background-repeat: no-repeat;
 }
 
-/* Container centers content without affecting background */
+/* Container centers content without special effects */
 .container {
   display: flex;
   flex-direction: column;  /* stack items vertically */
@@ -26,9 +26,56 @@ body {
   width: 100%;             /* ensure full width */
   box-sizing: border-box;  /* include padding in width calculation */
   padding: 20px;           /* add some padding for mobile */
+  gap: 20px;               /* space between toggle button and card */
 }
 
-/* Form styling */
+/* Toggle button styling */
+.toggle-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.toggle-btn:hover {
+  background: linear-gradient(135deg, #45a049, #3d8b40);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(76, 175, 80, 0.4);
+}
+
+/* Form card wrapper */
+.form-card {
+  background-color: rgba(30, 30, 30, 0.95);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: slideIn 0.3s ease-out;
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Slide-in animation for the card */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Form styling - adjusted for the shining container */
 form {
   width: 100%;
   max-width: 350px;        /* responsive width */
@@ -41,6 +88,8 @@ form {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); /* stronger dark shadow */
   margin: 0 auto;          /* center the form */
   border: 1px solid rgba(255, 255, 255, 0.1); /* subtle light border */
+  position: relative;      /* ensure form stays above the shine effect */
+  z-index: 1;
 }
 
 /* Input fields */
@@ -129,8 +178,13 @@ h1, h2, h3, h4, h5, h6 {
     padding: 10px;
   }
   
-  form {
+  .form-card {
     padding: 20px;
     width: 100%;
+  }
+  
+  .toggle-btn {
+    padding: 10px 20px;
+    font-size: 14px;
   }
 }
