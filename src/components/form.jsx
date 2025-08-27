@@ -8,6 +8,7 @@ export default function Form() {
   });
 
   const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState(""); // new state
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -15,37 +16,41 @@ export default function Form() {
   };
 
   const validate = () => {
-  const newErrors = {};
+    const newErrors = {};
 
-  if (!formData.name) newErrors.name = "Name is required";
+    if (!formData.name) newErrors.name = "Name is required";
 
-  if (!formData.email) {
-    newErrors.email = "Email is required";
-  } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-    newErrors.email = "Email is invalid";
-  }
+    if (!formData.email) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email is invalid";
+    }
 
-  if (!formData.password) {
-    newErrors.password = "Password is required";
-  } else if (
-    !/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(
-      formData.password
-    )
-  ) {
-    newErrors.password =
-      "Password must be at least 8 characters, include 1 uppercase letter, 1 number, and 1 special character";
-  }
+    if (!formData.password) {
+      newErrors.password = "Password is required";
+    } else if (
+      !/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(
+        formData.password
+      )
+    ) {
+      newErrors.password =
+        "Password must be at least 8 characters, include 1 uppercase letter, 1 number, and 1 special character";
+    }
 
-  return newErrors;
-};
+    return newErrors;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const validationErrors = validate();
     setErrors(validationErrors);
+
     if (Object.keys(validationErrors).length === 0) {
       console.log("Form Submitted:", formData);
+      setSuccessMessage("Form Submitted Successfully!"); // set success message
       setFormData({ name: "", email: "", password: "" });
+    } else {
+      setSuccessMessage(""); // clear success if there are errors
     }
   };
 
@@ -85,6 +90,8 @@ export default function Form() {
       </div>
 
       <button type="submit">Submit</button>
+
+      {successMessage && <p style={{ color: "green", marginTop: "10px" }}>{successMessage}</p>} {/* display message */}
     </form>
   );
 }

@@ -1,68 +1,136 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+/* Reset default margins and heights */
+html, body, #root {
+  height: 100%;
   margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden; /* remove horizontal scroll */
+}
+
+/* Body keeps your background image */
+body {
+  background-image: url('/background.jpeg'); /* your existing background */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Container centers content without affecting background */
+.container {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;  /* stack items vertically */
+  justify-content: center; /* vertical center */
+  align-items: center;     /* horizontal center */
+  min-height: 100vh;       /* full viewport height */
+  text-align: center;
+  width: 100%;             /* ensure full width */
+  box-sizing: border-box;  /* include padding in width calculation */
+  padding: 20px;           /* add some padding for mobile */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Form styling */
+form {
+  width: 100%;
+  max-width: 350px;        /* responsive width */
+  background-color: rgba(30, 30, 30, 0.95); /* dark background with high opacity */
+  padding: 30px;           /* increased padding */
+  border-radius: 15px;     /* slightly more rounded */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); /* stronger dark shadow */
+  margin: 0 auto;          /* center the form */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* subtle light border */
 }
 
+/* Input fields */
+input {
+  padding: 12px;           /* slightly more padding */
+  border: 1px solid #555;  /* darker border */
+  border-radius: 8px;      /* slightly more rounded */
+  font-size: 16px;         /* prevent zoom on mobile */
+  width: 100%;
+  box-sizing: border-box;  /* include padding in width */
+  background-color: rgba(50, 50, 50, 0.8); /* dark input background */
+  color: #ffffff;          /* white text */
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #4caf50;   /* green border on focus */
+  background-color: rgba(60, 60, 60, 0.9);
+}
+
+input::placeholder {
+  color: #aaaaaa;          /* light gray placeholder text */
+}
+
+/* Submit button */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  padding: 12px;           /* match input padding */
+  border: none;
+  border-radius: 8px;      /* match input radius */
+  background: linear-gradient(135deg, #4caf50, #45a049); /* gradient background */
+  color: white;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  font-size: 16px;
+  font-weight: bold;       /* bold button text */
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s ease; /* smooth hover effect */
+  text-transform: uppercase; /* uppercase button text */
+  letter-spacing: 1px;     /* spaced letters */
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+button:hover {
+  background: linear-gradient(135deg, #45a049, #3d8b40);
+  transform: translateY(-2px); /* slight lift effect */
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+/* Labels and form text */
+label {
+  color: #ffffff;          /* white text for labels */
+  font-weight: bold;       /* bold labels */
+  font-size: 14px;
+  margin-bottom: 5px;
+  text-transform: uppercase; /* uppercase labels */
+  letter-spacing: 0.5px;   /* slight letter spacing */
+}
+
+/* Error messages */
+p {
+  color: #ff6b6b;          /* lighter red for better contrast on dark background */
+  margin: 0;
+  font-size: 14px;
+  text-align: left;        /* left-align error messages for readability */
+  font-weight: bold;       /* bold error messages */
+}
+
+/* Form title/headings inside form */
+form h1, form h2, form h3 {
+  color: #ffffff;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+/* Additional centering for any content outside form */
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+  color: white;            /* assuming you want headings to be visible on background */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* text shadow for readability */
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+  
+  form {
+    padding: 20px;
+    width: 100%;
   }
 }

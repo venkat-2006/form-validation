@@ -1,10 +1,11 @@
 import Form from "./components/form";
+import './index.css';
 
 
 function App() {
   return (
-    <div>
-      <h1>React Form with Validation (Vite)</h1>
+    <div classname="container">
+      <h1>Form with Validation </h1>
       <Form />
     </div>
   );
